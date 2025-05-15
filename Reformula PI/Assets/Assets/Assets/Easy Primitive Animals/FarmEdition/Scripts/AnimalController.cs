@@ -27,7 +27,7 @@ namespace EasyPrimitiveAnimals
         private bool canRotate = true;
         private bool canPeck = true;
 
-        private void Start()
+      /*  private void Start()
         {
             if (!this.gameObject.CompareTag("Chicken"))
             {
@@ -69,7 +69,7 @@ namespace EasyPrimitiveAnimals
                     StartCoroutine(TimeToPeck());
                 }
             }
-        }
+        }*/
 
         private void OnCollisionEnter(Collision collision)
         {
