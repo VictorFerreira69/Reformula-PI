@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace EasyPrimitiveAnimals
 {
-    public class AnimalController : MonoBehaviour
+    public class AnimalController : MonoBehaviour,IDamageable
     {
         // Leg and body object variables
         public GameObject FrontLegL;
@@ -113,5 +113,14 @@ namespace EasyPrimitiveAnimals
             // Enable option to peck.
             canPeck = true;
         }
+         public void TakeHit()
+    {
+        // Chama a função de missão do QuestsManager
+        QuestsManager.instance.AnimalKillQuest();
+
+        // Destrói o animal
+        Destroy(gameObject);
     }
+    }
+    
 }

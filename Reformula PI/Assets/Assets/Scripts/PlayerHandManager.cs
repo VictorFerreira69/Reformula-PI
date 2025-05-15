@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
+//Os estados da mao
 public enum PlayerHandState
 {
     Nothing,
@@ -9,25 +10,53 @@ public enum PlayerHandState
 }
 public class PlayerHandManager : MonoBehaviour
 {
+    // Eventos que troca o estado da mao
     public UnityEvent OnNothing, OnBow, OnAxe;
+
+    
     public static PlayerHandManager instance;
+
+    // Guarda a rotação da mao
     Quaternion normalRotation;
+
+    //  transform da mão do jogador
     [SerializeField] Transform playerHandTransform;
+
+   
     void Awake()
     {
         instance = this;
     }
+
+    
     private void Start()
     {
+        // Salva a rotação da mao
         Quaternion normalRotation = playerHandTransform.localRotation;
+        // Salva a posição da mao
         Vector3 starterPosition = playerHandTransform.localPosition;
-        OnBow.AddListener(() => { playerHandTransform.localRotation = Quaternion.Euler(100.9f, 1.42f, -180f); playerHandTransform.position = new Vector3(0.5f + playerHandTransform.position.x, playerHandTransform.position.y + 0.3f, playerHandTransform.position.z); });
-        OnNothing.AddListener(() => { playerHandTransform.localRotation = normalRotation; playerHandTransform.localPosition = starterPosition; });
 
+        // Evento para o estado do arco
+        OnBow.AddListener(() => {
+            // Altera a rotação do arco
+            playerHandTransform.localRotation = Quaternion.Euler(100.9f, 1.42f, -180f);
+            // Ajusta a posição 
+            playerHandTransform.position = new Vector3(
+                0.5f + playerHandTransform.position.x, 
+                playerHandTransform.position.y + 0.3f, 
+                playerHandTransform.position.z
+            );
+        });
 
+        // Evento para o estado mão vazia
+        OnNothing.AddListener(() => {
+            // Volta para a rotação e posição inicial
+            playerHandTransform.localRotation = normalRotation;
+            playerHandTransform.localPosition = starterPosition;
+        });
     }
 
-
+    // Troca o estado da mão
     public void SwitchHandState(PlayerHandState state) 
     {
         switch(state)
@@ -42,16 +71,11 @@ public class PlayerHandManager : MonoBehaviour
                 OnAxe?.Invoke();
                 break;
         }
-
-
     }
+
+    // Ajusta a escala da mão 
     public void SetPlayerHandScale(float scale) 
     {
-     playerHandTransform.localScale = new Vector3(scale, scale, scale);
-
-
-
+        playerHandTransform.localScale = new Vector3(scale, scale, scale);
     }
-    
-
 }

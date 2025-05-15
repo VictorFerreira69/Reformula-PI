@@ -2,26 +2,25 @@ using UnityEngine;
 using UnityEngine.Events;
 public class NpcDialogue : MonoBehaviour, IInteractable
 {
-
-
+    [Header("Linhas de Diálogo")]
     [TextArea(3, 10)]
     public string[] dialogueLines;
-    [HideInInspector]public int where;
-    public UnityEvent OnFinishToTalk;
+
+    [Header("Eventos de Diálogo")]
     public UnityEvent OnStart;
+    public UnityEvent OnFinishToTalk;
+
+   
+    [HideInInspector]public int where;
+    
     bool canInteract = true;
   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        OnStart.Invoke();
+        OnStart.Invoke(); //Vendo se o evento esta atribuido
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+//Iniciando o dialgo com o npc 
     public void Interact()
     {
     
@@ -34,13 +33,14 @@ public class NpcDialogue : MonoBehaviour, IInteractable
 
 
     }
+    //Indo pro proximo dialogo do npc 
     public void NextDialogue() 
     {
          
         where++;
         if(where >= dialogueLines.Length)
         {
-            GameManager.instance.FinishDialogue();
+            GameManager.instance.FinishDialogue(); //acando o dialogo
             canInteract = true;
             where = 0;
             return;

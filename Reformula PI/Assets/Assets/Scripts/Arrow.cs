@@ -1,44 +1,48 @@
 
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Arrow : MonoBehaviour
 {
-    Rigidbody rb;
-    bool canRotate = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody rb;
+    private bool canRotate = true;
+
     void Start()
     {
-       rb = GetComponent<Rigidbody>();
-        transform.rotation = Quaternion.LookRotation(rb.linearVelocity, Vector3.up);
+        rb = GetComponent<Rigidbody>();
+        // Gira a flecha na direção da velocidade 
+        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (!canRotate) return;
-        transform.rotation = Quaternion.LookRotation(rb.linearVelocity, Vector3.up);
 
-
+        // Faz a flecha rotacionar de acordo com a direção do movimento
+        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
     }
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.CompareTag("Animal"))
-        {
-            QuestsManager.instance.AnimalKillQuest();    
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
 
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
+    private void OnTriggerEnter(Collider other)
+    {
+        // Se o objeto  tiver IDamageable nele, vai causar  dano
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            rb.linearVelocity = Vector3.zero;
+            damageable.TakeHit();
+            Destroy(gameObject); // Destroi a flecha
+            return;
+        }
+
+        // Caso atinja o chão, a flecha para e desativa física
+        if (other.CompareTag("Ground"))
+        {
+            rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             canRotate = false;
-            GetComponent<MeshCollider>().enabled = false;   
+
+            GetComponent<Collider>().enabled = false;
             rb.isKinematic = true;
             rb.useGravity = false;
-            
         }
     }
 }

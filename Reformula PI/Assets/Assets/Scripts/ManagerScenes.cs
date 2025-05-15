@@ -4,23 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class ManagerScenes : MonoBehaviour
 {
-    [SerializeField] string scene;
+     [Header("Nome da cena")]
+    [SerializeField] string scene; 
+ [Header("Tempo para carregar a cena")]
     [SerializeField] float time;
     void Start()
     {
-
-       StartCoroutine(CCh());    
-
+        // Inicia a coroutina
+        StartCoroutine(ChangeSceneAfterDelay());
     }
-    IEnumerator CCh()
+
+    // Espera o tempo definido e carrega a cena
+    private IEnumerator ChangeSceneAfterDelay()
     {
-
-
-        yield return new WaitForSeconds(time);
- 
-       SceneManager.LoadScene(scene);
-       
+        yield return new WaitForSeconds(time); // Espera o tempo acabar
+        SceneManager.LoadScene(scene); // Troca para a cena 
     }
-
-    
 }
+

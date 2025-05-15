@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-       public void Sair()
+       public void Sair()//Funçao para sair do jogo 
     {
 
-        Application.Quit(); 
+        Application.Quit(); //Sair do jogo
     }
 }

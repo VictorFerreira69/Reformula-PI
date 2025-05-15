@@ -3,76 +3,80 @@ using UnityEngine;
 
 public class PlayerBowOnHand : MonoBehaviour
 {
-    [SerializeField] float forceMultiplier;
-    [SerializeField]float timer;
+    [Header("Força do Tiro")]
+    [SerializeField] private float forceMultiplier; //  força para atira a flecha
+    [SerializeField] private float timeToMaxForce;    // Tempo máximo para  a força máxima
+    [SerializeField] private float timeToMinForce;   // Tempo mínimo para força mínima
+    [SerializeField] private float maxForce;   // Força máxima 
+    [SerializeField] private float minForce;   // Força mínima
 
-    [SerializeField]float maxForce;
+    [Header(" Tiro")]
+    [SerializeField] private float cooldownToShoot;   // cooldown entre tiros
+    [SerializeField] private GameObject arrowPrefab;   // Prefab da flecha
 
-    [SerializeField] float minForce;
-    [SerializeField] float timeToMaxForce;
-    [SerializeField] float timeToMinForce;
+    private Transform arrowInstancePosition;  // Posição onde a flecha será instanciada
+    private bool canShoot = true;  // Controle para saber se pode atirar
+    private float timer = 0f;   // Tempo para medir o carregamento do tiro
 
-    [SerializeField] float cooldownToShoot;
-
-    [SerializeField] GameObject arrowPrefab;
-    Transform arrowInstancePosition;
-    bool canShoot;
-     
     void Start()
     {
+        // Pega a posição para spawnar a flecha
         arrowInstancePosition = transform.GetChild(0);
         canShoot = true;
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        // o botão do mouse foi pressionado
+        if (Input.GetMouseButtonDown(0))
         {
-            
-        
+            timer = 0f;
         }
+
+        // Enquanto o botão do mouse estiver pressionado, acumula o tempo no timer
         if (Input.GetMouseButton(0) && canShoot)
         {
-            timer += Time.deltaTime; 
-
-
-
+            timer += Time.deltaTime;
         }
-   
+
+        // Quando o botão do mouse for solto,executa o tiro
         if (Input.GetMouseButtonUp(0) && canShoot)
         {
-            
             Shoot();
         }
-        void Shoot() 
-        {
+    }
 
-            GameObject arrowInstance = Instantiate(arrowPrefab, arrowInstancePosition.position, Quaternion.LookRotation(Camera.main.transform.forward));
-            Rigidbody arrowInstanceRb = arrowInstance.GetComponent<Rigidbody>();
-     
-            arrowInstance.transform.rotation = Quaternion.LookRotation(arrowInstanceRb.linearVelocity, Vector3.up);
-           
-            timer = Mathf.Clamp(timer, timeToMinForce, timeToMaxForce);
+    // Método que instancia a flecha 
+    private void Shoot()
+    {
+     // garantir que fique entre os tempos mínimo e máximo
+        timer = Mathf.Clamp(timer, timeToMinForce, timeToMaxForce);
 
-            float force = (timer / timeToMaxForce) * forceMultiplier;
-            Vector3 forceDirection = Camera.main.transform.forward * force;
+        // Calcula a força com o tempo de carregamento
+        float force = (timer / timeToMaxForce) * forceMultiplier;
 
-            arrowInstanceRb.AddForce(forceDirection);
-        
-            timer = 0;
+        // Instancia a flecha na posição definida com a rotação da câmera
+        GameObject arrowInstance = Instantiate(arrowPrefab, arrowInstancePosition.position, Quaternion.LookRotation(Camera.main.transform.forward));
 
-            StartCoroutine(ResetShootCooldown());
+        //  Rigidbody da flecha para aplicar a força
+        Rigidbody arrowRb = arrowInstance.GetComponent<Rigidbody>();
 
+        //   força na direção que a câmera está olhando
+        Vector3 forceDirection = Camera.main.transform.forward * force;
+        arrowRb.AddForce(forceDirection, ForceMode.Impulse);
 
-        }
-        IEnumerator ResetShootCooldown()
-        {
-            canShoot = false;
-            yield return new WaitForSeconds(cooldownToShoot);
-            canShoot = true;
-        }
+        // tempo para o tiro
+        timer = 0f;
 
+        // Começa a coroutine 
+        StartCoroutine(ResetShootCooldown());
+    }
+
+    // Coroutine controlar o cooldown dos tiros
+    private IEnumerator ResetShootCooldown()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(cooldownToShoot);
+        canShoot = true;
     }
 }
