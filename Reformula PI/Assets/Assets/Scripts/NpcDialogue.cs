@@ -40,7 +40,7 @@ public class NpcDialogue : MonoBehaviour, IInteractable
         where++;
         if(where >= dialogueLines.Length)
         {
-            GameManager.instance.FinishDialogue(); //acando o dialogo
+            GameManager.instance.FinishDialogue(); //acaba o dialogo
             canInteract = true;
             where = 0;
             return;

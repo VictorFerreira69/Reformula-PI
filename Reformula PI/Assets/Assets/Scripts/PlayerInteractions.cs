@@ -8,10 +8,10 @@ public class PlayerInteractions : MonoBehaviour
     
     void Update()
     {
-        // Se o jogador apertar E
-        if(Input.GetKeyDown(KeyCode.E)) 
+        // Se o jogador apertar o botao esquerdo do mouse
+        if(Input.GetButtonDown("Fire1")) 
         {
-            // Se tem objeto interagível perto, chama a interação
+            // Se o npc estiver perto,chama o interact
             interactableTarget?.Interact();
         }
     }

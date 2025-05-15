@@ -10,7 +10,7 @@ public enum PlayerHandState
 }
 public class PlayerHandManager : MonoBehaviour
 {
-    // Eventos que troca o estado da mao
+    // Evento que troca o estado da mao
     public UnityEvent OnNothing, OnBow, OnAxe;
 
     
