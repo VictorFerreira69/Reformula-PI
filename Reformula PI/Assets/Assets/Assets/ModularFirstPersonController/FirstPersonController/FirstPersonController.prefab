@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2520012424876096451}
   - component: {fileID: 8493317179616326875}
   - component: {fileID: 5391485644430023770}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 1307169008231373197}
   - component: {fileID: 3954003916064627212}
   - component: {fileID: 4926214253698158452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1477099753270297906}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 4459864850019384737}
   - component: {fileID: 4459864850019384741}
   - component: {fileID: 4459864850019384740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirstPersonController
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 4459864850190357392}
   - component: {fileID: 4459864850190357394}
   - component: {fileID: 4459864850190357395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4459864850831721275}
   - component: {fileID: 4459864850831721274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SprintBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 4459864850888339821}
   - component: {fileID: 4459864850888339823}
   - component: {fileID: 4459864850888339820}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 4459864851310106426}
   - component: {fileID: 4459864851310106427}
   - component: {fileID: 5716313424524526274}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ GameObject:
   - component: {fileID: 4459864851397454649}
   - component: {fileID: 4459864851397454651}
   - component: {fileID: 4459864851397454648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StaminaBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4459864851508666808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ GameObject:
   - component: {fileID: 4459864851551516607}
   - component: {fileID: 4459864851551516593}
   - component: {fileID: 4459864851551516606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CrosshairAndStamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1091,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2946046132441952675}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerMachado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1125,7 +1125,7 @@ GameObject:
   - component: {fileID: 5604456654901567053}
   - component: {fileID: 3303979412707309927}
   - component: {fileID: 3643583764670002440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1189,7 +1189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2651659790906213920}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 899987001956083002}
   - component: {fileID: 4370258885222574094}
   - component: {fileID: 5268893284510958826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerBow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1290,11 +1290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 1000
-  timer: 0
-  maxForce: 12
-  minForce: 2
   timeToMaxForce: 2
   timeToMinForce: 1
+  maxForce: 12
+  minForce: 2
   cooldownToShoot: 0
   arrowPrefab: {fileID: 5177910849701737764, guid: 3b8872927cbdeaa4db71b323ed3e571d, type: 3}
 --- !u!1 &5805234213412013351
@@ -1306,7 +1305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2407317948847351504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerOnHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1342,7 @@ GameObject:
   - component: {fileID: 7323208486089635484}
   - component: {fileID: 1867427736531958130}
   - component: {fileID: 3523664418707409352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,7 +1464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6178812989000766311}
   - component: {fileID: 7128322349301458958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerHandManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9075953218043696179}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightHandJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1670,7 +1669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1988088180825807048}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandJoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1704,7 +1703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2784315802492886573}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightHandJoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1739,7 +1738,7 @@ GameObject:
   - component: {fileID: 1525065331547891356}
   - component: {fileID: 372150691189649261}
   - component: {fileID: 3629624212393696044}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -6,12 +6,15 @@ public class Arrow : MonoBehaviour
 {
     private Rigidbody rb;
     private bool canRotate = true;
-
+ 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        // Gira a flecha na direção da velocidade 
-        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        
+         // Gira a flecha na direção da velocidade 
+        transform.rotation = Quaternion.LookRotation(rb.linearVelocity, Vector3.up);
+        
+        
     }
 
     void Update()
@@ -19,11 +22,13 @@ public class Arrow : MonoBehaviour
         if (!canRotate) return;
 
         // Faz a flecha rotacionar de acordo com a direção do movimento
-        transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+        transform.rotation = Quaternion.LookRotation(rb.linearVelocity, Vector3.up);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+             if (other.gameObject.layer == LayerMask.NameToLayer("Player")) return;
+
         // Se o objeto  tiver IDamageable nele, vai causar  dano
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
@@ -36,7 +41,7 @@ public class Arrow : MonoBehaviour
         // Caso atinja o chão, a flecha para e desativa física
         if (other.CompareTag("Ground"))
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             canRotate = false;
 

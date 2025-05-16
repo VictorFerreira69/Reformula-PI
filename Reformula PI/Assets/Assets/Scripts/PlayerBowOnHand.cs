@@ -16,7 +16,7 @@ public class PlayerBowOnHand : MonoBehaviour
 
     private Transform arrowInstancePosition;  // Posição onde a flecha será instanciada
     private bool canShoot = true;  // Controle para saber se pode atirar
-    private float timer = 0f;   // Tempo para medir o carregamento do tiro
+    private float timer = 0f;   // Tempo para o carregamento do tiro
 
     void Start()
     {
@@ -60,6 +60,7 @@ public class PlayerBowOnHand : MonoBehaviour
 
         //  Rigidbody da flecha para aplicar a força
         Rigidbody arrowRb = arrowInstance.GetComponent<Rigidbody>();
+        
 
         //   força na direção que a câmera está olhando
         Vector3 forceDirection = Camera.main.transform.forward * force;
